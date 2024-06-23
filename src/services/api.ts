@@ -13,12 +13,18 @@ export async function getTodos(userId: string) {
 export async function postTodo({
   title,
   userId,
+  username,
 }: {
   title: string;
   userId: string;
+  username: string;
 }) {
   try {
-    const response = await axios.post(`${apiUrl}/todos`, { title, userId });
+    const response = await axios.post(`${apiUrl}/todos`, {
+      title,
+      userId,
+      username,
+    });
     return response.data;
   } catch (error) {
     console.log("Error posting todo", error);

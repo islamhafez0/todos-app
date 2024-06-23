@@ -10,6 +10,7 @@ export const TodosContext = createContext<TodosContextTypes | undefined>(
 export const TodosProvider = ({ children }: { children: ReactNode }) => {
   const { user } = useAuthContext();
   const userId = user?.id;
+  const username = user?.name;
   useEffect(() => {
     if (userId) {
       fetchTodos();
@@ -34,7 +35,7 @@ export const TodosProvider = ({ children }: { children: ReactNode }) => {
   const addTodo = async (title: string) => {
     try {
       setLoading(true);
-      const newTodo = await postTodo({ title, userId });
+      const newTodo = await postTodo({ title, userId, username });
       setTodos((prev) => (prev ? [...prev, newTodo] : []));
     } catch (error) {
       console.log(error);
