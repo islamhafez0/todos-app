@@ -5,24 +5,8 @@ import AuthLayout from "./components/_auth/AuthLayout";
 import SigninForm from "./components/_auth/SigninForm";
 import RegisterForm from "./components/_auth/RegisterForm";
 import { useAuthContext } from "./hooks/useAuthContext";
-import { useEffect } from "react";
 export default function App() {
   const { isAuthenticated } = useAuthContext();
-  const favicon: HTMLLinkElement | null =
-    document.head.querySelector('link[rel="icon"]');
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (favicon) {
-        favicon.href =
-          document.visibilityState == "visible"
-            ? "./src/images/visible-favicon.png"
-            : "./src/images/hidden-favicon.png";
-      }
-    };
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    return () =>
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-  }, [favicon]);
   return (
     <>
       <Header />
