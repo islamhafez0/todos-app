@@ -21,10 +21,17 @@ const Todo = ({
       <div className="row">
         <h4>{title}</h4>
         <div className="icons">
-          <button onClick={async () => await deleteTodo(_id)}>
+          <button
+            aria-label="Delete Todo"
+            onClick={async () => await deleteTodo(_id)}
+          >
             <BiTrash />
           </button>
-          <button className="edit-todo" onClick={() => handleEditTodo(_id)}>
+          <button
+            aria-label="Edit Todo"
+            className="edit-todo"
+            onClick={() => handleEditTodo(_id)}
+          >
             <FaRegEdit />
           </button>
           <Checkbox

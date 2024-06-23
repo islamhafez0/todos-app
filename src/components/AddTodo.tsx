@@ -62,6 +62,7 @@ const AddTodo = ({
         />
         <button
           type="submit"
+          aria-label="Add Todo"
           disabled={
             loading ||
             todoValue.trim() === "" ||
