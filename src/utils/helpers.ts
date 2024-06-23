@@ -1,5 +1,9 @@
 export function formatTime(dateString: string): string {
   const date = new Date(dateString);
+  if (isNaN(date.getTime())) {
+    return "Invalid date";
+  }
+
   const now = new Date();
   const diff = now.getTime() - date.getTime();
 
