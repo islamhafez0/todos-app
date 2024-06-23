@@ -55,6 +55,9 @@ const RegisterForm = () => {
       }
       navigate("/");
     } catch (e) {
+      if (e instanceof AppwriteException) {
+        setError(e.message);
+      }
       console.log(e);
     } finally {
       setIsSigningin(false);
@@ -63,6 +66,7 @@ const RegisterForm = () => {
   if (appwriteLoading) {
     return <Loader height="45px" width="45px" />;
   }
+
   return (
     <form onSubmit={handleSubmit} className="auth-form">
       <h3>Create New Account</h3>
